@@ -1,21 +1,25 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Navbar } from "@/components/landing/Navbar";
 import { Hero } from "@/components/landing/Hero";
-import { Features } from "@/components/landing/Features";
+import { Stats } from "@/components/landing/Stats";
 import { About } from "@/components/landing/About";
 import { Process } from "@/components/landing/Process";
-import { Pricing } from "@/components/landing/Pricing";
-import { Stats } from "@/components/landing/Stats";
+import { Features } from "@/components/landing/Features";
+import { Difference } from "@/components/landing/Difference";
+import { Habit } from "@/components/landing/Habit";
+import { DashboardPreview } from "@/components/landing/DashboardPreview";
+import { Cta } from "@/components/landing/Cta";
 import { FAQ } from "@/components/landing/FAQ";
 import { Footer } from "@/components/landing/Footer";
+import { FloatingShapes } from "@/components/landing/FloatingShapes";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Apdash — Make Cool Landing Pages for Your App" },
-      { name: "description", content: "Apdash helps you build beautiful app landing pages with powerful features, flexible pricing, and 24/7 support." },
-      { property: "og:title", content: "Apdash — Make Cool Landing Pages" },
-      { property: "og:description", content: "Beautiful app landing pages with powerful features and flexible pricing." },
+      { title: "ZoujUp — Stop Studying, Start Speaking" },
+      { name: "description", content: "ZoujUp helps you master new languages through structured 10-minute speaking sessions with real people." },
+      { property: "og:title", content: "ZoujUp — Stop Studying, Start Speaking" },
+      { property: "og:description", content: "Structured language practice with real partners. No dating vibes, no small talk." },
     ],
   }),
   component: Index,
@@ -23,16 +27,22 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <main className="min-h-screen">
-      <Navbar />
-      <Hero />
-      <Features />
-      <About />
-      <Process />
-      <Pricing />
-      <Stats />
-      <FAQ />
-      <Footer />
-    </main>
+    <div className="relative min-h-screen bg-white overflow-x-hidden">
+      <FloatingShapes />
+      <div className="relative z-10">
+        <Navbar />
+        <Hero />
+        <Stats />
+        <About />
+        <Process />
+        <Features />
+        <Difference />
+        <Habit />
+        <DashboardPreview />
+        <FAQ />
+        <Cta />
+        <Footer />
+      </div>
+    </div>
   );
 }

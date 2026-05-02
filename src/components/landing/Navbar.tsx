@@ -1,27 +1,31 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navItems = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Features", href: "#features" },
-  { label: "Screenshots", href: "#screenshots" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "Contact", href: "#contact" },
+  { label: "How it Works", href: "/#how-it-works" },
+  { label: "Features", href: "/#features" },
+  { label: "FAQ", href: "/#faq" },
 ];
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header className="absolute top-0 left-0 right-0 z-50">
-      <nav className="container mx-auto flex items-center justify-between px-6 py-6">
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-white/80 backdrop-blur-md shadow-sm py-2" : "bg-transparent py-4"}`}>
+      <nav className="container mx-auto flex items-center justify-between px-6">
         <a href="#home" className="flex items-center gap-2">
-          <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-primary shadow-soft">
-            <Zap className="h-5 w-5 text-primary-foreground" fill="currentColor" />
-          </span>
-          <span className="text-2xl font-bold text-gradient-primary font-display">Apdash</span>
+          <img src="/logo.png" alt="ZoujUp" className="h-10 w-10 rounded-[10px] object-cover" />
+          <span className="text-2xl font-bold text-[#1A1A1A] font-display">ZoujUp</span>
         </a>
 
         <ul className="hidden lg:flex items-center gap-8">
@@ -29,7 +33,7 @@ export function Navbar() {
             <li key={item.href}>
               <a
                 href={item.href}
-                className="text-sm font-medium text-hero-foreground/90 hover:text-hero-foreground transition-smooth"
+                className="text-sm font-medium text-[#6B7280] hover:text-[#1A1A1A] transition-smooth"
               >
                 {item.label}
               </a>
@@ -38,14 +42,14 @@ export function Navbar() {
         </ul>
 
         <div className="hidden lg:block">
-          <Button variant="secondary" size="sm" className="rounded-full px-6">
-            Get Started
-          </Button>
+          <a href="/#cta" className="inline-flex items-center justify-center rounded-[12px] bg-[#FFC107] px-6 py-2 text-sm font-bold text-[#111111] hover:bg-[#E0A800] transition-smooth">
+            Start a session
+          </a>
         </div>
 
         <button
           onClick={() => setOpen(!open)}
-          className="lg:hidden text-hero-foreground"
+          className="lg:hidden text-[#1A1A1A]"
           aria-label="Toggle menu"
         >
           {open ? <X /> : <Menu />}

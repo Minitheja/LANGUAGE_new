@@ -4,24 +4,24 @@ import { Button } from "@/components/ui/button";
 
 const plans = [
   {
-    name: "Standard",
-    monthly: 19.99,
-    yearly: 69.99,
-    features: ["Limited access for a month", "15 customize sub page", "105 disk space", "3 domain access", "24/7 phone support"],
+    name: "Explorer",
+    monthly: 0,
+    yearly: 0,
+    features: ["3 sessions per week", "Standard matching", "Basic progress tracking", "Global network access"],
     featured: false,
   },
   {
-    name: "Premium",
-    monthly: 49.99,
-    yearly: 159.99,
-    features: ["Unlimited access for a month", "25 customize sub page", "150 disk space", "5 domain access", "24/7 phone support"],
+    name: "Polyglot",
+    monthly: 29,
+    yearly: 290,
+    features: ["Unlimited sessions", "Guided corrections", "Advanced matching", "Priority access", "Performance stats"],
     featured: true,
   },
   {
-    name: "Unlimited",
-    monthly: 69.99,
-    yearly: 259.99,
-    features: ["Limited access for a month", "15 customize sub page", "120 disk space", "5 domain access", "24/7 phone support"],
+    name: "Master",
+    monthly: 59,
+    yearly: 590,
+    features: ["Everything in Polyglot", "Private network", "Detailed analytics", "Weekly coach support", "Custom topics"],
     featured: false,
   },
 ];
@@ -34,11 +34,11 @@ export function Pricing() {
       <div className="container mx-auto px-6">
         <div className="text-center max-w-2xl mx-auto mb-12">
           <h2 className="text-4xl lg:text-5xl font-bold mb-5">
-            Our <span className="text-gradient-primary">Flexible</span> Price
+            Our <span className="text-gradient-primary">Flexible</span> Plans
           </h2>
           <p className="text-muted-foreground leading-relaxed">
-            Professional hosting at an affordable price. Distinctively recaptiualize principle-centered
-            core competencies through client-centered core competencies.
+            Choose the plan that fits your speaking goals. Whether you're just starting or 
+            looking for daily immersion, we have a network for you.
           </p>
         </div>
 

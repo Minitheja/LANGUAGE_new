@@ -1,27 +1,27 @@
 import { motion } from "framer-motion";
-import { Boxes, Headphones, Lock } from "lucide-react";
+import { Clock, Flame, TrendingUp } from "lucide-react";
 
-const features = [
+const habits = [
   {
-    icon: Boxes,
-    title: "You match → it dies",
-    desc: "The connection is made, but nobody says a word. The chat just sits there.",
+    icon: Clock,
+    title: "10-minute daily sessions",
+    desc: "Short enough to fit anywhere, long enough to matter.",
   },
   {
-    icon: Headphones,
-    title: "Conversations go nowhere",
-    desc: "Endless 'How are you?' loops. Small talk fades fast.",
+    icon: Flame,
+    title: "Track your speaking streak",
+    desc: "Build consistency. Don't break the chain.",
   },
   {
-    icon: Lock,
-    title: "It feels like dating",
-    desc: "Swipe culture ruins the focus. You're here to learn, not to browse profiles.",
+    icon: TrendingUp,
+    title: "See real improvement",
+    desc: "Watch your confidence and vocabulary grow visibly.",
   },
 ];
 
-export function Features() {
+export function Habit() {
   return (
-    <section id="features" className="py-24 bg-transparent relative overflow-hidden">
+    <section className="py-24 bg-transparent relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -31,15 +31,15 @@ export function Features() {
           className="text-center max-w-2xl mx-auto mb-16"
         >
           <h2 className="text-4xl lg:text-5xl font-bold mb-5 text-[#1A1A1A]">
-            Designed for <span className="text-[#FFC107]">Serious Speakers</span>
+            Built for <span className="text-[#FFC107]">Real Life</span>
           </h2>
           <p className="text-[#6B7280] leading-relaxed">
-            Move past casual apps and enter a system designed for high-performance language acquisition.
+            Language learning shouldn't feel like a chore. We designed ZoujUp to fit into your busiest days.
           </p>
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {features.map(({ icon: Icon, title, desc }, i) => (
+          {habits.map(({ icon: Icon, title, desc }, i) => (
             <motion.div
               key={title}
               initial={{ opacity: 0, y: 20 }}

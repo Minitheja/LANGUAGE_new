@@ -1,27 +1,27 @@
 import { motion } from "framer-motion";
-import { Boxes, Headphones, Lock } from "lucide-react";
+import { Headphones, Clock, LineChart } from "lucide-react";
 
-const features = [
-  {
-    icon: Boxes,
-    title: "You match → it dies",
-    desc: "The connection is made, but nobody says a word. The chat just sits there.",
-  },
+const differences = [
   {
     icon: Headphones,
-    title: "Conversations go nowhere",
-    desc: "Endless 'How are you?' loops. Small talk fades fast.",
+    title: "Structured conversations",
+    desc: "Guided prompts keep the conversation flowing and focused.",
   },
   {
-    icon: Lock,
-    title: "It feels like dating",
-    desc: "Swipe culture ruins the focus. You're here to learn, not to browse profiles.",
+    icon: Clock,
+    title: "Balanced speaking time",
+    desc: "5 minutes in your language, 5 minutes in theirs. No one-sided chats.",
+  },
+  {
+    icon: LineChart,
+    title: "Real progress",
+    desc: "Achieve actual fluency through consistent, measured practice.",
   },
 ];
 
-export function Features() {
+export function Difference() {
   return (
-    <section id="features" className="py-24 bg-transparent relative overflow-hidden">
+    <section className="py-24 bg-transparent relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -31,15 +31,15 @@ export function Features() {
           className="text-center max-w-2xl mx-auto mb-16"
         >
           <h2 className="text-4xl lg:text-5xl font-bold mb-5 text-[#1A1A1A]">
-            Designed for <span className="text-[#FFC107]">Serious Speakers</span>
+            The <span className="text-[#FFC107]">ZoujUp</span> Difference
           </h2>
           <p className="text-[#6B7280] leading-relaxed">
-            Move past casual apps and enter a system designed for high-performance language acquisition.
+            We stripped away everything that wastes time and kept only what makes you a better speaker.
           </p>
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {features.map(({ icon: Icon, title, desc }, i) => (
+          {differences.map(({ icon: Icon, title, desc }, i) => (
             <motion.div
               key={title}
               initial={{ opacity: 0, y: 20 }}
@@ -51,9 +51,9 @@ export function Features() {
                 scale: 1.02,
                 transition: { duration: 0.2 }
               }}
-              className="group relative bg-[#F8F9FA] rounded-[16px] p-8 shadow-sm hover:shadow-glow transition-all duration-300 border border-[#E5E7EB] hover:border-[#FFC107] hover:bg-[#FFC107] cursor-pointer"
+              className="group relative bg-[#FFFFFF] rounded-[16px] p-8 shadow-sm hover:shadow-glow transition-all duration-300 border border-[#E5E7EB] hover:border-[#FFC107] hover:bg-[#FFC107] cursor-pointer"
             >
-              <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-[12px] bg-[#FFFFFF] border border-[#E5E7EB] group-hover:border-transparent shadow-soft group-hover:scale-110 transition-smooth">
+              <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-[12px] bg-[#F8F9FA] border border-[#E5E7EB] shadow-soft group-hover:bg-[#FFFFFF] group-hover:border-transparent transition-smooth">
                 <Icon className="h-8 w-8 text-[#1A1A1A] group-hover:text-[#111111]" />
               </div>
               <h3 className="text-xl font-bold mb-3 text-[#1A1A1A] group-hover:text-[#111111]">{title}</h3>

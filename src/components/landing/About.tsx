@@ -1,63 +1,92 @@
+import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import aboutImg from "@/assets/about-illustration.png";
+import { LivePreview } from "./LivePreview";
 
 const bullets = [
-  "The only way your business can to the information.",
-  "Your app will be used by a host and for different.",
-  "Intrinsicly innovate top-line collaborative benefits.",
-  "Efficiently redefine value-added sources without.",
-  "The only way your business can evolve is in information.",
+  "User: \"I go to market yesterday\"",
+  "Partner: \"You should say: I went to the market\"",
+  "System: Correction highlighted",
+  "✔ Real-time chat & Voice messages",
+  "✔ Smart corrections & 10-minute session timer",
 ];
 
 export function About() {
   return (
-    <section id="about" className="py-24">
-      <div className="container mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div className="relative">
-            <div className="absolute -top-6 -left-6 h-24 w-24 rounded-full bg-gradient-primary opacity-20 blur-2xl" />
-            <img
-              src={aboutImg}
-              alt="App dashboard"
-              width={1024}
-              height={1024}
-              loading="lazy"
-              className="relative w-full max-w-lg mx-auto"
-            />
-          </div>
+    <section id="about" className="py-24 bg-transparent relative overflow-hidden">
+      <div className="container mx-auto px-6 relative z-10">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="grid lg:grid-cols-2 gap-16 items-center"
+        >
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="relative"
+          >
+            <div className="absolute inset-0 bg-[#FFC107] opacity-10 blur-[120px] rounded-full" />
+            <LivePreview />
+          </motion.div>
 
           <div className="space-y-6">
-            <h2 className="text-4xl lg:text-5xl font-bold leading-tight">
-              The Most Useful Resource Created For{" "}
-              <span className="text-gradient-primary">Designers</span>
-            </h2>
-            <p className="text-muted-foreground leading-relaxed">
-              Objectively deliver professional value with diverse web-readiness. Collaboratively
-              transition wireless customer service without goal-oriented catalysts for change.
-            </p>
+            <motion.h2 
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+              className="text-4xl lg:text-5xl font-bold leading-tight text-[#1A1A1A]"
+            >
+              This is what a real session <span className="text-[#FFC107]">looks like</span>
+            </motion.h2>
+            <motion.p 
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+              className="text-[#6B7280] leading-relaxed"
+            >
+              Structured prompts. Balanced speaking time. Get corrected while you speak and improve your accuracy.
+            </motion.p>
 
             <ul className="space-y-3">
-              {bullets.map((b) => (
-                <li key={b} className="flex items-start gap-3">
-                  <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gradient-primary">
-                    <Check className="h-3 w-3 text-primary-foreground" strokeWidth={3} />
+              {bullets.map((b, i) => (
+                <motion.li 
+                  key={b}
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.5 + (i * 0.1), duration: 0.5 }}
+                  className="flex items-start gap-3"
+                >
+                  <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#FFC107]">
+                    <Check className="h-3 w-3 text-[#111111]" strokeWidth={3} />
                   </span>
-                  <span className="text-foreground/80">{b}</span>
-                </li>
+                  <span className="text-[#6B7280]">{b}</span>
+                </motion.li>
               ))}
             </ul>
 
-            <div className="flex flex-wrap gap-4 pt-4">
-              <Button size="lg" className="rounded-full bg-gradient-primary shadow-glow hover:opacity-90">
-                Get Start Now
-              </Button>
-              <Button size="lg" variant="outline" className="rounded-full border-primary text-primary hover:bg-primary hover:text-primary-foreground">
-                Learn More
-              </Button>
-            </div>
+            <motion.div 
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.8, duration: 0.5 }}
+              className="flex flex-wrap gap-4 pt-4"
+            >
+              <a
+                href="/#cta"
+                className="group inline-flex items-center justify-center gap-3 rounded-[12px] bg-[#FFC107] px-8 py-4 text-[#111111] font-bold shadow-soft hover:bg-[#E0A800] hover:shadow-glow hover:scale-[1.05] active:scale-[0.96] transition-all duration-300"
+              >
+                Start a session
+              </a>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
