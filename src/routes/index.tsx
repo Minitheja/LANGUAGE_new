@@ -1,21 +1,22 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Navbar } from "@/components/landing/Navbar";
 import { Hero } from "@/components/landing/Hero";
-import { Features } from "@/components/landing/Features";
-import { About } from "@/components/landing/About";
-import { Process } from "@/components/landing/Process";
-import { Pricing } from "@/components/landing/Pricing";
-import { Stats } from "@/components/landing/Stats";
-import { FAQ } from "@/components/landing/FAQ";
+import { Network } from "@/components/landing/Network";
+import { Preview } from "@/components/landing/Preview";
+import { HowItWorks } from "@/components/landing/HowItWorks";
+import { Problem } from "@/components/landing/Problem";
+import { Difference } from "@/components/landing/Difference";
+import { Habit } from "@/components/landing/Habit";
+import { FinalCTA } from "@/components/landing/FinalCTA";
 import { Footer } from "@/components/landing/Footer";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Apdash — Make Cool Landing Pages for Your App" },
-      { name: "description", content: "Apdash helps you build beautiful app landing pages with powerful features, flexible pricing, and 24/7 support." },
-      { property: "og:title", content: "Apdash — Make Cool Landing Pages" },
-      { property: "og:description", content: "Beautiful app landing pages with powerful features and flexible pricing." },
+      { title: "Speakly — Real 10-minute speaking sessions, not random chats" },
+      { name: "description", content: "Structured 10-minute conversations with real people. No ghosting. No small talk. Just focused language practice." },
+      { property: "og:title", content: "Speakly — Real speaking sessions" },
+      { property: "og:description", content: "Structured 10-minute language conversations with real people." },
     ],
   }),
   component: Index,
@@ -26,12 +27,13 @@ function Index() {
     <main className="min-h-screen">
       <Navbar />
       <Hero />
-      <Features />
-      <About />
-      <Process />
-      <Pricing />
-      <Stats />
-      <FAQ />
+      <Network />
+      <Preview />
+      <HowItWorks />
+      <Problem />
+      <Difference />
+      <Habit />
+      <FinalCTA />
       <Footer />
     </main>
   );
