@@ -1,33 +1,35 @@
 import { useState } from "react";
-import { Link } from "@tanstack/react-router";
-import { Menu, X, Mic } from "lucide-react";
+import { Menu, X, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navItems = [
-  { label: "How it works", href: "#how" },
-  { label: "Why us", href: "#difference" },
-  { label: "Habit", href: "#habit" },
+  { label: "Home", href: "#home" },
+  { label: "About", href: "#about" },
+  { label: "Features", href: "#features" },
+  { label: "Screenshots", href: "#screenshots" },
+  { label: "Pricing", href: "#pricing" },
+  { label: "Contact", href: "#contact" },
 ];
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-background/85 backdrop-blur border-b border-border">
-      <nav className="container mx-auto flex items-center justify-between px-6 py-4">
-        <Link to="/" className="flex items-center gap-2">
-          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary">
-            <Mic className="h-5 w-5 text-primary-foreground" />
+    <header className="absolute top-0 left-0 right-0 z-50">
+      <nav className="container mx-auto flex items-center justify-between px-6 py-6">
+        <a href="#home" className="flex items-center gap-2">
+          <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-primary shadow-soft">
+            <Zap className="h-5 w-5 text-primary-foreground" fill="currentColor" />
           </span>
-          <span className="text-xl font-bold tracking-tight">Speakly</span>
-        </Link>
+          <span className="text-2xl font-bold text-gradient-primary font-display">Apdash</span>
+        </a>
 
-        <ul className="hidden md:flex items-center gap-8">
+        <ul className="hidden lg:flex items-center gap-8">
           {navItems.map((item) => (
             <li key={item.href}>
               <a
                 href={item.href}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-smooth"
+                className="text-sm font-medium text-hero-foreground/90 hover:text-hero-foreground transition-smooth"
               >
                 {item.label}
               </a>
@@ -35,16 +37,15 @@ export function Navbar() {
           ))}
         </ul>
 
-        <div className="hidden md:flex items-center gap-3">
-          <Link to="/dashboard" className="text-sm font-medium text-muted-foreground hover:text-foreground">
-            Dashboard
-          </Link>
-          <Button variant="cta" size="default">Start a session</Button>
+        <div className="hidden lg:block">
+          <Button variant="secondary" size="sm" className="rounded-full px-6">
+            Get Started
+          </Button>
         </div>
 
         <button
           onClick={() => setOpen(!open)}
-          className="md:hidden text-foreground"
+          className="lg:hidden text-hero-foreground"
           aria-label="Toggle menu"
         >
           {open ? <X /> : <Menu />}
@@ -52,21 +53,19 @@ export function Navbar() {
       </nav>
 
       {open && (
-        <div className="md:hidden border-t border-border bg-background">
+        <div className="lg:hidden bg-background border-b border-border shadow-card">
           <ul className="container mx-auto px-6 py-4 space-y-3">
             {navItems.map((item) => (
               <li key={item.href}>
-                <a href={item.href} onClick={() => setOpen(false)} className="block py-2 text-sm font-medium">
+                <a
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  className="block py-2 text-sm font-medium text-foreground hover:text-primary"
+                >
                   {item.label}
                 </a>
               </li>
             ))}
-            <li>
-              <Link to="/dashboard" className="block py-2 text-sm font-medium">Dashboard</Link>
-            </li>
-            <li>
-              <Button variant="cta" className="w-full">Start a session</Button>
-            </li>
           </ul>
         </div>
       )}
