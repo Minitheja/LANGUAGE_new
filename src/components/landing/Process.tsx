@@ -41,7 +41,7 @@ export function Process() {
                 transition={{ delay: i * 0.15, duration: 0.5 }}
                 className="text-right"
               >
-                <div className="inline-flex h-14 w-14 items-center justify-center rounded-[12px] bg-[#FFFFFF] border border-[#E5E7EB] mb-4 shadow-sm transition-smooth hover:border-[#FFC107] hover:scale-105">
+                <div className="inline-flex h-14 w-14 items-center justify-center rounded-[12px] bg-[#FFFFFF]/60 backdrop-blur-md border border-[#E5E7EB] mb-4 shadow-sm transition-smooth hover:border-[#FFC107] hover:scale-105 group-hover:shadow-md">
                   <Icon className="h-6 w-6 text-[#1A1A1A]" strokeWidth={1.5} />
                 </div>
                 <h3 className="text-lg font-bold mb-2">{title}</h3>
@@ -55,16 +55,24 @@ export function Process() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="relative order-first lg:order-none"
+            className="relative order-first lg:order-none group"
           >
-            <div className="absolute inset-0 bg-[#FFFFFF] opacity-50 blur-3xl rounded-full" />
+            {/* Enhanced multi-layer background glow */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-[#FFC107]/30 via-[#FFC107]/10 to-transparent blur-[120px] rounded-full scale-150 opacity-40 animate-pulse" />
+            <div className="absolute inset-0 bg-gradient-to-bl from-[#FFC107]/20 to-transparent blur-[80px] rounded-full scale-110 opacity-30" />
+            
+            {/* Animated Pings */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-[#FFC107]/20 rounded-full animate-ping opacity-20" />
+            <div className="absolute top-1/3 left-1/4 w-2 h-2 bg-[#FFC107] rounded-full animate-pulse shadow-[0_0_10px_#FFC107]" />
+            <div className="absolute bottom-1/4 right-1/3 w-1.5 h-1.5 bg-[#FFC107] rounded-full animate-pulse delay-700 shadow-[0_0_10px_#FFC107]" />
+
             <img
               src={featuresImg}
               alt="App features illustration"
               width={1024}
               height={1024}
               loading="lazy"
-              className="relative w-full max-w-md mx-auto animate-float mix-blend-multiply [mask-image:radial-gradient(circle,white_70%,transparent_100%)]"
+              className="relative w-full max-w-md mx-auto animate-float mix-blend-multiply [mask-image:radial-gradient(circle,black_45%,transparent_95%)] filter contrast-[1.25] brightness-[1.05] saturate-[1.2] drop-shadow-[0_0_40px_rgba(255,193,7,0.15)] transition-all duration-700 group-hover:scale-105"
             />
           </motion.div>
 
@@ -78,7 +86,7 @@ export function Process() {
                 transition={{ delay: i * 0.15, duration: 0.5 }}
                 className="text-left"
               >
-                <div className="inline-flex h-14 w-14 items-center justify-center rounded-[12px] bg-[#FFFFFF] border border-[#E5E7EB] mb-4 shadow-sm transition-smooth hover:border-[#FFC107] hover:scale-105">
+                <div className="inline-flex h-14 w-14 items-center justify-center rounded-[12px] bg-[#FFFFFF]/60 backdrop-blur-md border border-[#E5E7EB] mb-4 shadow-sm transition-smooth hover:border-[#FFC107] hover:scale-105 group-hover:shadow-md">
                   <Icon className="h-6 w-6 text-[#1A1A1A]" strokeWidth={1.5} />
                 </div>
                 <h3 className="text-lg font-bold mb-2">{title}</h3>
