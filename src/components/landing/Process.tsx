@@ -54,7 +54,7 @@ export function Process() {
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.3, duration: 0.8 }}
+            transition={{ delay: 0.1, duration: 0.6 }}
             className="relative order-first lg:order-none group"
           >
             {/* Enhanced multi-layer background glow */}

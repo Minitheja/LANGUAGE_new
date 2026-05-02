@@ -5,8 +5,8 @@ export function FloatingShapes() {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  const springX = useSpring(mouseX, { stiffness: 50, damping: 20 });
-  const springY = useSpring(mouseY, { stiffness: 50, damping: 20 });
+  const springX = useSpring(mouseX, { stiffness: 200, damping: 30 });
+  const springY = useSpring(mouseY, { stiffness: 200, damping: 30 });
 
   const moveX = useTransform(springX, [-1000, 1000], [-100, 100]);
   const moveY = useTransform(springY, [-1000, 1000], [-100, 100]);
@@ -34,10 +34,10 @@ export function FloatingShapes() {
               scale: [1, 1.3, 1],
             }}
             transition={{ 
-              duration: 15 + Math.random() * 10,
+              duration: 8 + Math.random() * 4,
               repeat: Infinity,
               ease: "easeInOut",
-              delay: Math.random() * 20,
+              delay: Math.random() * 2,
             }}
             className="absolute rounded-full bg-[#FFC107] blur-[120px]"
             style={{ 
@@ -63,10 +63,10 @@ export function FloatingShapes() {
               y: [0, -50, 0],
             }}
             transition={{ 
-              duration: 8 + Math.random() * 12,
+              duration: 4 + Math.random() * 4,
               repeat: Infinity,
               ease: "easeInOut",
-              delay: Math.random() * 30,
+              delay: Math.random() * 5,
             }}
             className="absolute rounded-full border-2 border-[#FFC107] bg-[#FFC107]/20 shadow-[0_0_20px_rgba(255,193,7,0.4)]"
             style={{ 
@@ -87,9 +87,9 @@ export function FloatingShapes() {
               scale: [0, 1.5, 0],
             }}
             transition={{ 
-              duration: 4 + Math.random() * 4,
+              duration: 2 + Math.random() * 2,
               repeat: Infinity,
-              delay: Math.random() * 20,
+              delay: Math.random() * 5,
             }}
             className="absolute rounded-full bg-[#FFC107]"
             style={{ 
