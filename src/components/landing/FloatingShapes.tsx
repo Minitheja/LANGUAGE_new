@@ -1,15 +1,15 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 
 export function FloatingShapes() {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  const springX = useSpring(mouseX, { stiffness: 200, damping: 30 });
-  const springY = useSpring(mouseY, { stiffness: 200, damping: 30 });
+  const springX = useSpring(mouseX, { stiffness: 400, damping: 40 });
+  const springY = useSpring(mouseY, { stiffness: 400, damping: 40 });
 
-  const moveX = useTransform(springX, [-1000, 1000], [-100, 100]);
-  const moveY = useTransform(springY, [-1000, 1000], [-100, 100]);
+  const moveX = useTransform(springX, [-1000, 1000], [-250, 250]);
+  const moveY = useTransform(springY, [-1000, 1000], [-250, 250]);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -21,82 +21,112 @@ export function FloatingShapes() {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, [mouseX, mouseY]);
 
+  // Memoize random values to prevent re-randomization on every render (flicker fix)
+  const orbs = useMemo(() => [...Array(20)].map((_, i) => ({
+    id: i,
+    size: 300 + Math.random() * 400,
+    left: Math.random() * 100,
+    top: Math.random() * 100,
+    duration: 3 + Math.random() * 2,
+    delay: Math.random() * 1,
+  })), []);
+
+  const bubbles = useMemo(() => [...Array(50)].map((_, i) => ({
+    id: i,
+    size: 20 + Math.random() * 60,
+    left: Math.random() * 100,
+    top: Math.random() * 100,
+    duration: 2 + Math.random() * 2,
+    delay: Math.random() * 2,
+  })), []);
+
+  const dots = useMemo(() => [...Array(40)].map((_, i) => ({
+    id: i,
+    left: Math.random() * 100,
+    top: Math.random() * 100,
+    duration: 1 + Math.random() * 1,
+    delay: Math.random() * 2,
+  })), []);
+
   return (
-    <div className="absolute inset-0 h-full w-full overflow-hidden pointer-events-none z-0" aria-hidden="true">
-      <motion.div style={{ x: moveX, y: moveY }} className="h-full w-full">
-        {/* Large Background Orbs - Distributed across full page height */}
-        {[...Array(30)].map((_, i) => (
+    <div className="absolute inset-0 h-full w-full overflow-hidden pointer-events-none z-0" aria-hidden="true" style={{ perspective: "1000px", backfaceVisibility: "hidden" }}>
+      <motion.div style={{ x: moveX, y: moveY, willChange: "transform" }} className="h-full w-full">
+        {/* Large Background Orbs */}
+        {orbs.map((orb) => (
           <motion.div
-            key={`orb-${i}`}
+            key={`orb-${orb.id}`}
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ 
-              opacity: [0, 0.25, 0],
-              scale: [1, 1.3, 1],
+              opacity: [0, 0.2, 0],
+              scale: [1, 1.2, 1],
             }}
             transition={{ 
-              duration: 8 + Math.random() * 4,
+              duration: orb.duration,
               repeat: Infinity,
               ease: "easeInOut",
-              delay: Math.random() * 2,
+              delay: orb.delay,
             }}
-            className="absolute rounded-full bg-[#FFC107] blur-[120px]"
+            className="absolute rounded-full bg-[#FFC107] blur-[100px]"
             style={{ 
-              width: 300 + Math.random() * 400,
-              height: 300 + Math.random() * 400,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
+              width: orb.size,
+              height: orb.size,
+              left: `${orb.left}%`,
+              top: `${orb.top}%`,
+              willChange: "transform, opacity",
+              transform: "translateZ(0)",
             }}
           />
         ))}
 
-        {/* Sharp Bubbles - Massive quantity for full page */}
-        {[...Array(100)].map((_, i) => (
+        {/* Sharp Bubbles */}
+        {bubbles.map((bubble) => (
           <motion.div
-            key={`bubble-${i}`}
-            initial={{ 
-              opacity: 0, 
-              scale: 0.5,
-            }}
+            key={`bubble-${bubble.id}`}
+            initial={{ opacity: 0, scale: 0.5 }}
             animate={{ 
-              opacity: [0, 0.5, 0],
-              scale: [0.8, 1.2, 0.8],
-              y: [0, -50, 0],
+              opacity: [0, 0.4, 0],
+              scale: [0.8, 1.1, 0.8],
+              y: [0, -30, 0],
             }}
             transition={{ 
-              duration: 4 + Math.random() * 4,
+              duration: bubble.duration,
               repeat: Infinity,
               ease: "easeInOut",
-              delay: Math.random() * 5,
+              delay: bubble.delay,
             }}
-            className="absolute rounded-full border-2 border-[#FFC107] bg-[#FFC107]/20 shadow-[0_0_20px_rgba(255,193,7,0.4)]"
+            className="absolute rounded-full border-2 border-[#FFC107] bg-[#FFC107]/10 shadow-[0_0_15px_rgba(255,193,7,0.3)]"
             style={{ 
-              width: 20 + Math.random() * 60,
-              height: 20 + Math.random() * 60,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
+              width: bubble.size,
+              height: bubble.size,
+              left: `${bubble.left}%`,
+              top: `${bubble.top}%`,
+              willChange: "transform, opacity",
+              transform: "translateZ(0)",
             }}
           />
         ))}
 
         {/* Tiny Energy Dots */}
-        {[...Array(80)].map((_, i) => (
+        {dots.map((dot) => (
           <motion.div
-            key={`dot-${i}`}
+            key={`dot-${dot.id}`}
             animate={{ 
-              opacity: [0, 0.8, 0],
-              scale: [0, 1.5, 0],
+              opacity: [0, 0.7, 0],
+              scale: [0, 1.2, 0],
             }}
             transition={{ 
-              duration: 2 + Math.random() * 2,
+              duration: dot.duration,
               repeat: Infinity,
-              delay: Math.random() * 5,
+              delay: dot.delay,
             }}
             className="absolute rounded-full bg-[#FFC107]"
             style={{ 
-              width: 5,
-              height: 5,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
+              width: 4,
+              height: 4,
+              left: `${dot.left}%`,
+              top: `${dot.top}%`,
+              willChange: "transform, opacity",
+              transform: "translateZ(0)",
             }}
           />
         ))}

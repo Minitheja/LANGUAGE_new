@@ -58,13 +58,13 @@ export function Process() {
             className="relative order-first lg:order-none group"
           >
             {/* Enhanced multi-layer background glow */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-[#FFC107]/30 via-[#FFC107]/10 to-transparent blur-[120px] rounded-full scale-150 opacity-40 animate-pulse" />
-            <div className="absolute inset-0 bg-gradient-to-bl from-[#FFC107]/20 to-transparent blur-[80px] rounded-full scale-110 opacity-30" />
+            <div className="absolute inset-0 bg-gradient-to-tr from-[#FFC107]/30 via-[#FFC107]/10 to-transparent blur-[120px] rounded-full scale-150 opacity-40 animate-pulse will-change-[transform,opacity]" />
+            <div className="absolute inset-0 bg-gradient-to-bl from-[#FFC107]/20 to-transparent blur-[80px] rounded-full scale-110 opacity-30 will-change-transform" />
             
             {/* Animated Pings */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-[#FFC107]/20 rounded-full animate-ping opacity-20" />
-            <div className="absolute top-1/3 left-1/4 w-2 h-2 bg-[#FFC107] rounded-full animate-pulse shadow-[0_0_10px_#FFC107]" />
-            <div className="absolute bottom-1/4 right-1/3 w-1.5 h-1.5 bg-[#FFC107] rounded-full animate-pulse delay-700 shadow-[0_0_10px_#FFC107]" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-[#FFC107]/20 rounded-full animate-ping opacity-20 will-change-[transform,opacity]" />
+            <div className="absolute top-1/3 left-1/4 w-2 h-2 bg-[#FFC107] rounded-full animate-pulse shadow-[0_0_10px_#FFC107] will-change-transform" />
+            <div className="absolute bottom-1/4 right-1/3 w-1.5 h-1.5 bg-[#FFC107] rounded-full animate-pulse delay-700 shadow-[0_0_10px_#FFC107] will-change-transform" />
 
             <img
               src={featuresImg}
@@ -72,7 +72,7 @@ export function Process() {
               width={1024}
               height={1024}
               loading="lazy"
-              className="relative w-full max-w-md mx-auto animate-float mix-blend-multiply [mask-image:radial-gradient(circle,black_45%,transparent_95%)] filter contrast-[1.25] brightness-[1.05] saturate-[1.2] drop-shadow-[0_0_40px_rgba(255,193,7,0.15)] transition-all duration-700 group-hover:scale-105"
+              className="relative w-full max-w-md mx-auto animate-float mix-blend-multiply [mask-image:radial-gradient(circle,black_45%,transparent_95%)] filter contrast-[1.25] brightness-[1.05] saturate-[1.2] drop-shadow-[0_0_40px_rgba(255,193,7,0.15)] transition-all duration-700 group-hover:scale-105 will-change-transform"
             />
           </motion.div>
 
